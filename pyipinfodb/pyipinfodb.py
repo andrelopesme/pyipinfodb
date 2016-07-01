@@ -19,7 +19,7 @@ class IPInfo() :
     def __init__(self, apikey):
         self.apikey = apikey
 
-    def get_ip_info(self, baseurl, ip=None):
+    def get_ip_info(self, baseurl, ip=None, timeout=None):
         """
             Same as get_city and get_country, but a baseurl is required.
             This is for if you want to use a different server that uses
@@ -35,7 +35,7 @@ class IPInfo() :
                 # if domain is not found, just use input
                 passdict['ip'] = ip
         url = baseurl + "?" + urlencode(passdict)
-        urlobj = urllib2.urlopen(url)
+        urlobj = urllib2.urlopen(url, timeout=timeout)
         data = urlobj.read()
         urlobj.close()
         datadict = json.loads(data.decode('utf-8'))
