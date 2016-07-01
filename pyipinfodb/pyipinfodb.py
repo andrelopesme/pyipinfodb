@@ -41,7 +41,7 @@ class IPInfo() :
         datadict = json.loads(data.decode('utf-8'))
         return datadict
 
-    def get_country(self, ip=None):
+    def get_country(self, ip=None, timeout=None):
         """
             Gets the location with the context of the country of the given IP.
             If no IP is given, then the location of the client is given.
@@ -49,9 +49,9 @@ class IPInfo() :
         """
 
         baseurl = 'http://api.ipinfodb.com/v3/ip-country/'
-        return self.get_ip_info(baseurl, ip)
+        return self.get_ip_info(baseurl, ip, timeout)
 
-    def get_city(self, ip=None):
+    def get_city(self, ip=None, timeout=None):
         """
             Gets the location with the context of the city of the given IP.
             If no IP is given, then the location of the client is given.
@@ -59,4 +59,4 @@ class IPInfo() :
         """
 
         baseurl = 'http://api.ipinfodb.com/v3/ip-city/'
-        return self.get_ip_info(baseurl, ip)
+        return self.get_ip_info(baseurl, ip, timeout)
