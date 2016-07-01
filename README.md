@@ -5,9 +5,8 @@ free IP address geolocation [API](http://ipinfodb.com/ip_location_api.php).
 In order to use it, you need to get an [api key](http://ipinfodb.com/register.php).
 
 *Note: This repo was originally forked from 
-[here](https://github.com/sonicrules1234/pyipinfodb) but since that account
-no longer seems to be active, I've taken things into my own hands 
-and created a new repo for (relatively) active development of this API wrapper.*
+(https://github.com/mossberg/pyipinfodb). I've added a timeout capability so
+the API does not get in your way and block your code.
 
 ## getting started
 
@@ -18,7 +17,7 @@ instantiate an IPInfo object using your api key, and you're ready to go!
 In this example, replace `<apikey>` with your api key.
 
 ```bash
-$ curl -L -O https://github.com/markmossberg/pyipinfodb/archive/master.zip
+$ curl -L -O https://github.com/andrelopesme/pyipinfodb/archive/master.zip
 $ unzip master.zip
 $ cd pyipinfodb-master
 $ python
@@ -31,11 +30,9 @@ $ python
 ## installation
 
 If you want to use this in a real project, you need to install the package.
-You can use [pip](https://pypi.python.org/pypi/pip) to install the package
-straight from this github repo.
 
 ```bash
-$ pip install git+git://github.com/markmossberg/pyipinfodb.git
+$ pip install git+git://github.com/andrelopesme/pyipinfodb.git
 ```
 
 Or you can manually run the `setup.py` file in the zip file.
@@ -46,7 +43,7 @@ $ python setup.py install
 
 ## documentation
 
-#### `get_country(self, ip=None)`
+#### `get_country(self, ip=None, timeout=None)`
 
 Return a dictionary with country information based on ip address passed as
 parameter.  
@@ -56,7 +53,7 @@ Example output:
 
 If no parameters are passed, returns information about the client ip making the request.
 
-#### `get_city(self, ip=None)`
+#### `get_city(self, ip=None, timeout=None)`
 
 Return a dictionary with detailed country, city, and timezone information
 based on ip address passed as parameter.  
@@ -70,7 +67,7 @@ the request.
 Avoid using this function if you don't need this level of detail, it helps
 keep the load lower on IPInfoDB's servers :)
 
-#### `get_ip_info(self, baseurl, ip=None)`
+#### `get_ip_info(self, baseurl, ip=None, timeout=None)`
 
 This is the backend that powers the above functions. It lets you specify a
 base url to use for your requests. You probably won't need to use this
