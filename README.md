@@ -73,6 +73,24 @@ This is the backend that powers the above functions. It lets you specify a
 base url to use for your requests. You probably won't need to use this
 function.
 
+## extra example with 2 seconds timeout
+
+    import pyipinfodb
+    
+    ...
+    
+    try:
+		ip_lookup = pyipinfodb.IPInfo('your-key-here')
+		geo_data = ip_lookup.get_city(get_client_ip(request), timeout=2)
+		lat = geo_data['latitude']
+		lon = geo_data['longitude']
+		country_code = ip_lookup.get_country(get_client_ip(request), timeout=2)['countryCode']
+	except:
+		lat = u'38.87392854'
+		lon = u'-8.20678711'
+	  	country_code = ""
+    ...
+    
 ## contributing
 
 Feel free to contribute! Just fork this repo, clone the fork to your local
