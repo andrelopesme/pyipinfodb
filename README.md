@@ -112,3 +112,7 @@ rename the file to `secrets.py`. Now you can simply run tests with:
 ```bash
 $ nosetests
 ```
+
+---
+Personal Blog
+http://andrelopes.me
